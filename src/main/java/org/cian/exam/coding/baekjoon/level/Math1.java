@@ -1,14 +1,11 @@
-package org.cian.exam.coding.level;
+package org.cian.exam.coding.baekjoon.level;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Math1 {
-    public static void back1011() throws IOException {
+    public static void baek1011() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
 
@@ -31,7 +28,7 @@ public class Math1 {
         }
     }
 
-    public static void back10757() throws IOException {
+    public static void baek10757() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         java.lang.String[] arrayStr = br.readLine().split(" ");
         char[] charArrayA = arrayStr[0].toCharArray();
@@ -87,7 +84,7 @@ public class Math1 {
 
     }
 
-    public static void back2839() throws IOException {
+    public static void baek2839() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         int big = N / 5;
@@ -117,7 +114,7 @@ public class Math1 {
         }
     }
 
-    public static void back2775() throws IOException {
+    public static void baek2775() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
 
@@ -142,7 +139,7 @@ public class Math1 {
         }
     }
 
-    public static void back10250() throws IOException {
+    public static void baek10250() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
         for(int t = 0 ; t < T ; t++) {
@@ -173,7 +170,7 @@ public class Math1 {
         }
     }
 
-    public static void back2869() throws IOException {
+    public static void baek2869() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         java.lang.String[] strArray = br.readLine().split(" ");
         int A = Integer.parseInt(strArray[0]);
@@ -191,7 +188,7 @@ public class Math1 {
         }
     }
 
-    public static void back1193() throws IOException {
+    public static void baek1193() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int X = Integer.parseInt(br.readLine());
         int A = 0;
@@ -213,7 +210,7 @@ public class Math1 {
         }
     }
 
-    public static void back2292() throws IOException {
+    public static void baek2292() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         int A = 0;
@@ -234,7 +231,7 @@ public class Math1 {
         System.out.println(result);
     }
 
-    public static void back1712() throws IOException {
+    public static void baek1712() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         java.lang.String[] str = br.readLine().split(" ");
         int A = Integer.parseInt(str[0]);

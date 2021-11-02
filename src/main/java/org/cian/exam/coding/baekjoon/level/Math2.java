@@ -1,4 +1,4 @@
-package org.cian.exam.coding.level;
+package org.cian.exam.coding.baekjoon.level;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,21 +6,126 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class Math2 {
-    public static void back9020() throws IOException {
+    public static void baek4153() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        while(true) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int[] intArray = new int[3];
+
+            for(int i = 0 ; i < 3 ; i++) {
+                intArray[i] = Integer.parseInt(st.nextToken());
+            }
+
+            if(intArray[0] + intArray[1] + intArray[2] == 0) {
+                break;
+            }
+
+            intArray = Arrays.stream(intArray).sorted().toArray();
+
+            int wh = (intArray[0] * intArray[0]) + (intArray[1] * intArray[1]);
+            int d = intArray[2] * intArray[2];
+
+            if(wh == d) {
+                System.out.println("right");
+            }else {
+                System.out.println("wrong");
+            }
+        }
+    }
+
+    public static void baek3009() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int[] intArrayX = new int[3];
+        int[] intArrayY = new int[3];
+
+        for(int i = 0 ; i < intArrayX.length ; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            intArrayX[i] = Integer.parseInt(st.nextToken());
+            intArrayY[i] = Integer.parseInt(st.nextToken());
+        }
+        intArrayX = Arrays.stream(intArrayX).sorted().toArray();
+        intArrayY = Arrays.stream(intArrayY).sorted().toArray();
+
+        int x = intArrayX[0];
+        int y = intArrayY[0];
+
+        if(intArrayX[0] == intArrayX[1]) {
+            x = intArrayX[2];
+        }else if(intArrayX[0] == intArrayX[2]) {
+            x = intArrayX[1];
+        }
+        if(intArrayY[0] == intArrayY[1]){
+            y = intArrayY[2];
+        }else if(intArrayY[0] == intArrayY[2]){
+            y = intArrayY[1];
+        }
+
+        System.out.println(x + " " + y);
+    }
+
+    public static void baek1085() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int[] intArray = new int[4];
+
+        for(int i = 0 ; i < intArray.length ; i++) {
+            intArray[i] = Integer.parseInt(st.nextToken());
+
+            if(i == 2 || i == 3) {
+                intArray[i] -= intArray[i - 2];
+            }
+        }
+
+        intArray = Arrays.stream(intArray).sorted().toArray();
+
+        System.out.println(intArray[0]);
+
+    }
+
+    public static void baek9020() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
 
         for(int i = 0 ; i < T ; i++) {
             int n = Integer.parseInt(br.readLine());
+            int A = n;
+            int B = 0;
 
+            Boolean[] prime = new Boolean[n + 1];
+            Arrays.fill(prime, Boolean.FALSE);
 
+            prime[0] = prime[1] = true;
+
+            for(int j = 2 ; j < Math.sqrt(prime.length) ; j++){
+                if(prime[j]){
+                    continue;
+                }
+                for(int k = j * j ; k < prime.length ; k = k + j ) {
+                    prime[k] = true;
+                }
+            }
+
+            for(int j = 1 ; j <= n / 2 ; j++) {
+                if(prime[j]) {
+                    continue;
+                }
+                if(prime[n - j]) {
+                    continue;
+                }
+                A = j;
+                B = n - j;
+
+            }
+            System.out.println(A + " " + B);
         }
     }
 
-    public static void back4948() throws IOException {
+    public static void baek4948() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = -1;
         while(n != 0){
@@ -53,7 +158,7 @@ public class Math2 {
         }
     }
 
-    public static void back1929() throws IOException {
+    public static void baek1929() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         java.lang.String[] strArray = br.readLine().split(" ");
         int M = Integer.parseInt(strArray[0]);
@@ -84,7 +189,7 @@ public class Math2 {
         }
     }
 
-    public static void back11653() throws IOException {
+    public static void baek11653() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         int q = N;
@@ -100,7 +205,7 @@ public class Math2 {
         }
     }
 
-    public static void back2581() throws IOException {
+    public static void baek2581() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int M = Integer.parseInt(br.readLine());
         int N = Integer.parseInt(br.readLine());
@@ -132,7 +237,7 @@ public class Math2 {
     }
 
 
-    public static void back1978() throws IOException {
+    public static void baek1978() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         java.lang.String[] strArray = br.readLine().split(" ");

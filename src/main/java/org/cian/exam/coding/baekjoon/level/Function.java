@@ -1,4 +1,4 @@
-package org.cian.exam.coding.level;
+package org.cian.exam.coding.baekjoon.level;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Function {
-    public static void back1065() throws IOException {
+    public static void baek1065() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
@@ -35,7 +35,7 @@ public class Function {
 
     }
 
-    public static void back4673() {
+    public static void baek4673() {
         int N = 200;
         List<Integer> A = new ArrayList<>();
         List<Integer> B = new ArrayList<>();

@@ -10,6 +10,47 @@ import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class Math2 {
+    public static void baek1002() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
+
+        for(int i = 0 ; i < T ; i++) {
+            String[] strArray = br.readLine().split(" ");
+            int x1 = Integer.parseInt(strArray[0]);
+            int y1 = Integer.parseInt(strArray[1]);
+            int r1 = Integer.parseInt(strArray[2]);
+            int x2 = Integer.parseInt(strArray[3]);
+            int y2 = Integer.parseInt(strArray[4]);
+            int r2 = Integer.parseInt(strArray[5]);
+
+            double distanceP = Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
+
+            if(x1 == x2 && y1 == y2 && r1 == r2) {
+                System.out.println(-1);
+            }else if(x1 == x2 && y1 == y2 && r1 != r2) {
+                System.out.println(0);
+            }else if(distanceP < Math.pow(r1 - r2, 2)) {
+                System.out.println(0);
+            }else if(distanceP == Math.pow(r1 - r2, 2)) {
+                System.out.println(1);
+            }else if(distanceP == Math.pow(r1 + r2, 2)) {
+                System.out.println(1);
+            }else if(distanceP > Math.pow(r1 + r2, 2)) {
+                System.out.println(0);
+            }else {
+                System.out.println(2);
+            }
+        }
+    }
+
+    public static void baek3053() throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int R = Integer.parseInt(br.readLine());
+
+        System.out.println(String.format("%.6f", Math.PI * R * R));
+        System.out.println(String.format("%.6f", (double) R * R * 2));
+    }
+
     public static void baek4153() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

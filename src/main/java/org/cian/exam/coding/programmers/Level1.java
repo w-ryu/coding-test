@@ -1,20 +1,23 @@
-package org.cian.exam.coding;
+package org.cian.exam.coding.programmers;
+
+import org.cian.exam.coding.Main;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Main {
+public class Level1 {
     public static void main(String[] args) throws IOException {
         int[] lottos = {0, 0, 0, 0, 0, 0};
         int[] win_nums = {38, 19, 20, 40, 15, 25};
-        int[] result = new Solution().solution(lottos, win_nums);
+        int[] result = new Level1.program77484().solution(lottos, win_nums);
 
         for (int i : result) {
             System.out.print(i + ", ");
         }
     }
 
-    static class Solution {
+
+    static class program77484 {
         public int[] solution(int[] lottos, int[] win_nums) {
             Arrays.sort(lottos);
             Arrays.sort(win_nums);

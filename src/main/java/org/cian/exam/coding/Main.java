@@ -22,6 +22,7 @@ public class Main {
             int zeroCnt = 0;
             int matchCnt = 0;
 
+
             for(int i = 0 ; i < 6 ; i++) {
                 if(lottos[i] == 0) {
                     zeroCnt++;

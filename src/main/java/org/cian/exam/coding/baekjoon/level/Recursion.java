@@ -13,6 +13,7 @@ public class Recursion {
 
     /**
      * baek2447
+     * @throws IOException
      */
     static char[][] arr;
 

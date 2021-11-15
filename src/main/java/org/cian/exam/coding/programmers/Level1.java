@@ -16,7 +16,6 @@ public class Level1 {
         }
     }
 
-
     static class program77484 {
         public int[] solution(int[] lottos, int[] win_nums) {
             Arrays.sort(lottos);

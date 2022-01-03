@@ -3,36 +3,39 @@ package org.cian.exam.coding.baekjoon.level;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Sort {
 
-    // 문자 정렬 [중복 제거]
     public void baek18870()throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
+        String[] strArr = br.readLine().split(" ");
 
-        String[][] memberArr = new String[N][2];
+        int[] originIntArr = new int[N];
+        int[] orderIntArr = new int[N];
 
+        Map changeMap = new HashMap();
         for(int i = 0 ; i < N ; i++) {
-            String[] strArr = br.readLine().split(" ");
-            memberArr[i][0] = strArr[0];
-            memberArr[i][1] = strArr[1];
+            originIntArr[i] = orderIntArr[i] = Integer.parseInt(strArr[i]);
         }
 
-        Arrays.sort(memberArr, (member1, member2) -> {
-            return Integer.parseInt(member1[0]) - Integer.parseInt(member2[0]);
-        });
+        orderIntArr = Arrays.stream(orderIntArr).sorted().distinct().toArray();
+
+        int index = 0;
+
+        for(int v : orderIntArr) {
+            changeMap.put(v, index);
+            index++;
+        }
 
         StringBuilder sb = new StringBuilder();
-        for(String[] member : memberArr) {
-            sb.append(member[0] + " " + member[1]).append("\n");
-        }
 
+        for(int key : originIntArr) {
+            sb.append(changeMap.get(key) + " ");
+        }
         System.out.println(sb);
     }
 

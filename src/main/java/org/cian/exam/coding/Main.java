@@ -1,33 +1,25 @@
 package org.cian.exam.coding;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.stream.IntStream;
 
 public class Main {
+
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        String[] strArr = br.readLine().split(" ");
-        int[] intArr = new int[N];
-        for(int i = 0 ; i < N ; i++) {
-            intArr[i] = Integer.parseInt(strArr[i]);
+        String new_id = "...!@BaT#*..y.abcdefghijklm";
+        String answer = new_id.toLowerCase().replaceAll("[^(._\\-)(a-z0-9)\\s]", "");
+        answer = answer.replaceAll("[.]+", ".");
+        answer = answer.replaceAll("^[.]|[.]$", "");
+        if(answer.equals("")){
+            answer = "a";
         }
 
-        int[] changeArr = intArr;
-        changeArr = IntStream.of(intArr).distinct().sorted().toArray();
-
-        StringBuilder sb = new StringBuilder();
-
-        for(int i = 0 ; i < N ; i++) {
-            for(int j = 0 ; j < changeArr.length ; j++) {
-                if(intArr[i] == changeArr[j]) {
-                    sb.append(j).append(" ");
-                }
-            }
+        if(answer.length() > 15) {
+            answer = answer.substring(0, 15);
         }
+        answer = answer.replaceAll("[.]$", "");
 
-        System.out.println(sb);
+        while(answer.length() < 3) {
+            answer += answer.substring(answer.length() - 1);
+        }
     }
 }

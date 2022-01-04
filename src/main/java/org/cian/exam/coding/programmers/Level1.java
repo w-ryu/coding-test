@@ -1,11 +1,121 @@
 package org.cian.exam.coding.programmers;
-
-import org.cian.exam.coding.Main;
-
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Level1 {
+
+    // 실패율
+    public int[] solution42889(int N, int[] stages) {
+        int[] answer = new int[N];
+        Double[] failRateArr = new Double[N];
+        Double[] sortArr = new Double[N];
+        for(int i = 1 ; i <= N ; i++) {
+            double tryMems = 0;
+            double successMems = 0;
+            for(int stage : stages) {
+                if(stage >= i) {
+                    successMems++;
+                }
+                if(stage == i) {
+                    tryMems++;
+                }
+            }
+            if(successMems == 0) {
+                failRateArr[i-1] = sortArr[i-1] = (double)0;
+            }else {
+                failRateArr[i-1] = sortArr[i-1] = tryMems / successMems;
+            }
+        }
+
+        Arrays.sort(sortArr, Comparator.reverseOrder());
+
+        for(int i = 0 ; i < N ; i++) {
+            for(int j = 0 ; j < N ; j++) {
+                if(sortArr[i] == failRateArr[j]) {
+                    answer[i] = (int)j+1;
+                    failRateArr[j] = (double)-1;
+                }
+            }
+        }
+        return answer;
+    }
+
+    //키패드 누르기
+    public String solution67256(int[] numbers, String hand) {
+        String answer = "";
+
+        int leftHand = 10;
+        int rightHand = 12;
+        for(int num : numbers) {
+
+            if(num == 0) {
+                num = 11;
+            }
+
+            switch(num % 3) {
+                case 1 :
+                    answer += "L";
+                    leftHand = num;
+                    break;
+                case 2 :
+                    int leftLength = (Math.abs(num - leftHand) / 3) + (Math.abs(num - leftHand) % 3);
+                    int rightLength = (Math.abs(num - rightHand) / 3) + (Math.abs(num - rightHand) % 3);
+                    if(leftLength == rightLength){
+                        if("right".equals(hand)){
+                            answer += "R";
+                            rightHand = num;
+                        }else {
+                            answer += "L";
+                            leftHand = num;
+                        }
+                    }else if(leftLength > rightLength) {
+                        answer += "R";
+                        rightHand = num;
+                    }else {
+                        answer += "L";
+                        leftHand = num;
+                    }
+                    break;
+                default:
+                    answer += "R";
+                    rightHand = num;
+                    break;
+            }
+        }
+        return answer;
+    }
+
+    //숫자 문자열과 영단어
+    public int solution81301(String s) {
+        String[] wordArr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        for(int i = 0 ; i < 9 ; i++) {
+            if(s.contains(wordArr[i])) {
+                s = s.replaceAll(wordArr[i], ""+i);
+            }
+        }
+        return Integer.parseInt(s);
+    }
+
+    public String solution72410(String new_id) {
+        String answer = new_id.toLowerCase().replaceAll("[^a-z0-9-_.]", "");
+        answer = answer.replaceAll("\\.{2,}", ".");
+        answer = answer.replaceAll("^[.]|[.]$", "");
+        if(answer.equals("")){
+            answer = "a";
+        }
+
+        if(answer.length() > 15) {
+            answer = answer.substring(0, 15);
+        }
+        answer = answer.replaceAll("[.]$", "");
+
+        while(answer.length() < 3) {
+            answer += answer.substring(answer.length() - 1);
+        }
+        return answer;
+    }
+
     public static void main(String[] args) throws IOException {
         int[] lottos = {0, 0, 0, 0, 0, 0};
         int[] win_nums = {38, 19, 20, 40, 15, 25};

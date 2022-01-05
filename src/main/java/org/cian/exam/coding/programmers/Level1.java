@@ -5,6 +5,90 @@ import java.util.Comparator;
 
 public class Level1 {
 
+    //제일 작은 수 제거하기
+    public int[] solution12935(int[] arr) {
+        int[] answer;
+        if(arr.length == 1) {
+            return answer = new int[]{-1};
+        }
+
+        int min = Arrays.stream(arr).min().getAsInt();
+        int index = 0;
+        answer = new int[arr.length - 1];
+        for(int i = 0 ; i < arr.length ; i++) {
+            if(arr[i] == min){
+                continue;
+            }
+            answer[index] = arr[i];
+            index++;
+        }
+
+        return answer;
+    }
+
+//    public int[] solution(int[] arr) {
+//        if (arr.length <= 1) return new int[]{ -1 };
+//        int min = Arrays.stream(arr).min().getAsInt();
+//        return Arrays.stream(arr).filter(i -> i != min).toArray();
+//    }
+
+    //문자열 내 p와 y의 개수
+    boolean solution12916(String s) {
+        char[] charArr = s.toCharArray();
+        int p = 0;
+        int y = 0;
+        for(char ch : charArr) {
+            if(ch == 'p' || ch == 'P') p++;
+            if(ch == 'y' || ch == 'Y') y++;
+        }
+
+        return p == y;
+    }
+
+//    boolean solution(String s) {
+//        s = s.toUpperCase();
+//
+//        return s.chars().filter( e -> 'P'== e).count() == s.chars().filter( e -> 'Y'== e).count();
+//    }
+
+    //시저암호
+    public String solution12926(String s, int n) {
+        String answer = "";
+        for(int i = 0 ; i < s.length() ; i++) {
+            char ch = s.charAt(i);
+            if(ch == ' ') {
+                answer += ch;
+                continue;
+            }
+            if(Character.isLowerCase(ch)){
+                answer += (char)((ch - 'a' + n) % 26 + 'a');
+            }else if(Character.isUpperCase(ch)) {
+                answer += (char)((ch - 'A' + n) % 26 + 'A');
+            }
+        }
+
+        return answer;
+    }
+
+    //없는 숫자 더하기
+    class Solution0000 {
+        public int solution(int[] numbers) {
+            int sum = 45;
+            for(int num : numbers) {
+                sum -= num;
+            }
+
+            return sum;
+        }
+    }
+
+
+//class Solution {
+//    public int solution(int[] numbers) {
+//        return IntStream.range(0, 10).filter(i -> Arrays.stream(numbers).noneMatch(num -> i == num)).sum();
+//    }
+//}
+
     // 실패율
     public int[] solution42889(int N, int[] stages) {
         int[] answer = new int[N];

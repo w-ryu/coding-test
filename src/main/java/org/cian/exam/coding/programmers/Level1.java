@@ -5,7 +5,28 @@ import java.util.Comparator;
 
 public class Level1 {
 
-    //제일 작은 수 제거하기
+    public int solution12928(int n) {
+        int answer = 0;
+        for(int i = 1 ; i <= n / 2 ; i++) {
+            if(n % i == 0) {
+                int share = n / i;
+                if(share < i) {
+                    break;
+                }
+                if(share == i){
+                    answer += i;
+                }else{
+                    answer += share + i;
+                }
+            }
+        }
+
+        return answer;
+    }
+
+    //System.out.println(c.sumDivisor(12)); 제곱근 으로 다시 풀기기
+
+   //제일 작은 수 제거하기
     public int[] solution12935(int[] arr) {
         int[] answer;
         if(arr.length == 1) {

@@ -5,6 +5,43 @@ import java.util.Comparator;
 
 public class Level1 {
 
+    //문자열 비교
+    public String[] solution12915(String[] strings, int n) {
+        Arrays.sort(strings, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                char c1 = o1.charAt(n);
+                char c2 = o2.charAt(n);
+                if(c1 == c2){
+                    return o1.compareTo(o2);
+                }else {
+                    return c1 - c2;
+                }
+            }
+        });
+        return strings;
+    }
+
+    public String solution12917(String s) {
+        String[] strArr = s.split("");
+        Arrays.sort(strArr, Comparator.reverseOrder());
+        StringBuilder sb = new StringBuilder();
+        for(String str : strArr) {
+            sb.append(str);
+        }
+
+        return sb.toString();
+    }
+
+
+    public long solution12933(long n) {
+        char[] strN = String.valueOf(n).toCharArray();
+        Arrays.sort(strN);
+        StringBuilder sb = new StringBuilder(new String(strN));
+
+        return Long.valueOf(sb.reverse().toString());
+    }
+
     public int solution12928(int n) {
         int answer = 0;
         for(int i = 1 ; i <= n / 2 ; i++) {

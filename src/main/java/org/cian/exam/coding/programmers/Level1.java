@@ -1,9 +1,238 @@
 package org.cian.exam.coding.programmers;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
 public class Level1 {
+    //완주하지 못한 선수
+    public String solution42576(String[] participant, String[] completion) {
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        int index = -1;
+        for(int i = 0 ; i < completion.length ; i++) {
+            if(participant[i].equals(completion[i])){
+                index = i;
+                break;
+            }
+        }
+        if(index == -1) {
+            index = participant.length - 1;
+        }
+
+        return participant[index];
+    }
+
+//    public String solution(String[] participant, String[] completion) {
+//        String answer = "";
+//        HashMap<String, Integer> hm = new HashMap<>();
+//        for (String player : participant) hm.put(player, hm.getOrDefault(player, 0) + 1);
+//        for (String player : completion) hm.put(player, hm.get(player) - 1);
+//
+//        for (String key : hm.keySet()) {
+//            if (hm.get(key) != 0){
+//                answer = key;
+//            }
+//        }
+//        return answer;
+//    }
+
+    // K번째수
+    public int[] solution42748(int[] array, int[][] commands) {
+        int[] answer = new int[commands.length];
+
+        for(int i = 0 ; i < commands.length ; i++) {
+            int[] commandArr = commands[i];
+            List<Integer> sortList = new ArrayList<>();
+            for(int j = commandArr[0] - 1 ; j < commandArr[1] ; j++) {
+                sortList.add(array[j]);
+            }
+            Collections.sort(sortList);
+            answer[i] = sortList.get(commandArr[2]-1);
+        }
+
+        return answer;
+    }
+
+//    public int[] solution(int[] array, int[][] commands) {
+//        int[] answer = new int[commands.length];
+//
+//        for(int i=0; i<commands.length; i++){
+//            int[] temp = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
+//            Arrays.sort(temp);
+//            answer[i] = temp[commands[i][2]-1];
+//        }
+//
+//        return answer;
+//    }
+
+    //폰켓몬
+    public int solution1845(int[] nums) {
+        Arrays.sort(nums);
+        int answer = 1;
+        for(int i = 1 ; i < nums.length ; i++) {
+            if(nums[i-1] != nums[i]) {
+                answer++;
+            }
+        }
+        if(nums.length/2 < answer) {
+            answer = nums.length/2;
+        }
+        return answer;
+    }
+
+//    public int solution(int[] nums) {
+//        return Arrays.stream(nums)
+//                .boxed()
+//                .collect(Collectors.collectingAndThen(Collectors.toSet(),
+//                        phonekemons -> Integer.min(phonekemons.size(), nums.length / 2)));
+//    }
+
+    //모의고사
+    public int[] solution(int[] answers) {
+        int[] grade = new int[3];
+        int[] A = {1, 2, 3, 4, 5};
+        int[] B = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] C = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        for(int i = 0 ; i < answers.length ; i++) {
+            if(answers[i] == A[i%5]) grade[0]++;
+            if(answers[i] == B[i%8]) grade[1]++;
+            if(answers[i] == C[i%10]) grade[2]++;
+        }
+
+        int max = Math.max(Math.max(grade[0], grade[1]), grade[2]);
+        List<Integer> answerList = new ArrayList();
+        if(max == grade[0]) answerList.add(1);
+        if(max == grade[1]) answerList.add(2);
+        if(max == grade[2]) answerList.add(3);
+
+        int[] answer = new int[answerList.size()];
+        for(int i = 0 ; i < answerList.size() ; i++) {
+            answer[i] = answerList.get(i);
+        }
+        //    list.stream().mapToInt(i->i.intValue()).toArray();
+
+        return answer;
+    }
+
+
+
+    // 최소직사각형
+    public int solution86491(int[][] sizes) {
+        int width = 0;
+        int height = 0;
+        for(int i = 0 ; i < sizes.length ; i++) {
+            if(sizes[i][0] > sizes[i][1]){
+                if(width < sizes[i][0]) {
+                    width = sizes[i][0];
+                }
+                if(height < sizes[i][1]) {
+                    height = sizes[i][1];
+                }
+            }else {
+                if(width < sizes[i][1]) {
+                    width = sizes[i][1];
+                }
+                if(height < sizes[i][0]) {
+                    height = sizes[i][0];
+                }
+            }
+        }
+        return width * height;
+    }
+
+//    public int solution(int[][] sizes) {
+//        return Arrays.stream(sizes).reduce((a, b) -> new int[]{
+//                Math.max(Math.max(a[0], a[1]), Math.max(b[0], b[1])), Math.max(Math.min(a[0], a[1]), Math.min(b[0], b[1]))
+//        }).map(it -> it[0] * it[1]).get();
+//    }
+
+    //비밀지도
+    public String[] solution17681(int n, int[] arr1, int[] arr2) {
+        String[] answer = new String[n];
+
+        for(int i = 0 ; i < n ; i++) {
+            char[] charArr1 = Integer.toBinaryString(arr1[i]).toCharArray();
+            char[] charArr2 = Integer.toBinaryString(arr2[i]).toCharArray();
+            char[] resultArr = new char[n];
+            for(char a : charArr1) {
+                System.out.print(a);
+            }
+            System.out.println();
+            for(int j = n - 1 ; j >= 0 ; j--) {
+                if(charArr1.length - n + j >= 0 && charArr1[j - (n - charArr1.length)] == '1'){
+                    resultArr[j] = '#';
+                }else if(charArr2.length - n + j >= 0 && charArr2[j - (n - charArr2.length)] == '1') {
+                    resultArr[j] = '#';
+                }else {
+                    resultArr[j] = ' ';
+                }
+            }
+            answer[i] = new String(resultArr);
+        }
+
+        return answer;
+    }
+
+//    public String[] solution(int n, int[] arr1, int[] arr2) {
+//        String[] result = new String[n];
+//        for (int i = 0; i < n; i++) {
+//            result[i] = Integer.toBinaryString(arr1[i] | arr2[i]);
+//        }
+//
+//        for (int i = 0; i < n; i++) {
+//            result[i] = String.format("%" + n + "s", result[i]);
+//            result[i] = result[i].replaceAll("1", "#");
+//            result[i] = result[i].replaceAll("0", " ");
+//        }
+//
+//        return result;
+//    }
+
+    //다트게임
+    public int solution17682(String dartResult) {
+        char[] charArr = dartResult.toCharArray();
+        int[] gradeArr = new int[3];
+        int length = charArr.length;
+        int answer = 0;
+        int count = 0;
+
+        for(int i = 0 ; i < length ; i++) {
+            char c = charArr[i];
+
+            switch(c) {
+                case 'S':
+                    gradeArr[count - 1] *= 1;
+                    break;
+                case 'D':
+                    gradeArr[count - 1] *= gradeArr[count - 1];
+                    break;
+                case 'T':
+                    gradeArr[count - 1] *= gradeArr[count - 1] * gradeArr[count - 1];
+                    break;
+                case '*':
+                    gradeArr[count - 1] *= 2;
+                    if(count != 1) {
+                        gradeArr[count - 2] *= 2;
+                    }
+                    break;
+                case '#':
+                    gradeArr[count - 1] *= -1;
+                    break;
+                default:
+                    if(i > 0 && charArr[i-1] == '1' && charArr[i] == '0'){
+                        gradeArr[count - 1] = 10;
+                    }else {
+                        gradeArr[count] = Character.getNumericValue(c);
+                        count++;
+                    }
+                    break;
+            }
+        }
+
+        for(int a : gradeArr) {
+            answer += a;
+        }
+        return answer;
+    }
 
     //문자열 비교
     public String[] solution12915(String[] strings, int n) {

@@ -1,75 +1,139 @@
 package org.cian.exam.coding;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
-        Solution0000 solutionClass = new Solution0000();
-        String s = "1D2S#10S";
-        int answer = solutionClass.solution(s);
-        System.out.println(answer);
+    static boolean[][] filed;
+            public static void main(String[] args) throws IOException {
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                StringBuilder sb = new StringBuilder();
+                int t = Integer.parseInt(br.readLine());
+                for(int test = 0 ; test < t ; test++){
+                    int answer = 0;
+                    String[] strArr = br.readLine().split(" ");
+            int n = Integer.parseInt(strArr[0]);
+            int m = Integer.parseInt(strArr[1]);
+            int k = Integer.parseInt(strArr[2]);
 
-//        for(String a : answer) {
-//            System.out.print(a + ", ");
-//        }
+            filed = new boolean[n][m];
+            for(int i = 0 ; i < k ; i++) {
+                String[] xyArr = br.readLine().split(" ");
+                filed[Integer.parseInt(xyArr[0])][Integer.parseInt(xyArr[1])] = true;
+            }
 
-//        System.out.print("[");
-//        for(int[] a : answer){
-//            System.out.print("[");
-//            for(int b : a) {
-//                System.out.print(b);
-//                System.out.print(", ");
-//            }
-//            System.out.print("]");
-//        }
-//        System.out.print("]");
+            for(int i = 0 ; i < n ; i++) {
+                for(int j = 0 ; j < m ; j++) {
+                    if(filed[i][j]){
+                        group(i, j, n, m);
+                        answer++;
+                    }
+                }
+            }
+            sb.append(answer).append("\n");
+        }
+        System.out.println(sb);
     }
+
+    static void group(int x, int y, int n, int m) {
+        if(filed[x][y]) filed[x][y] = false;
+        if(x < n-1 && filed[x+1][y]) group(x+1, y, n, m);
+        if(x-1 >= 0 && filed[x-1][y]) group(x-1, y, n, m);
+        if(y < m-1 && filed[x][y+1]) group(x, y+1, n, m);
+        if(y-1 >= m && filed[x][y-1]) group(x, y-1, n, m);
+    }
+
+//    public static void main(String[] args) throws IOException {
+//        Solution0000 solutionClass = new Solution0000();
+//        Print print = new Print();
+//        String s = "3people unFollowed me";
+//        int n = 10;
+//        int[] arr1 = {2,6,8,14};
+//        int[] arr2 = {27 ,56, 19, 14, 14, 10};
+//        int[][] sizes = {{2, 5, 3},{4, 4, 1},{1, 7, 3}};
+//        String[] strArr1 = {"marina", "josipa", "nikola", "vinko", "filipa"};
+//        String[] strArr2 = {"josipa", "filipa", "marina", "nikola"};
+//
+//        String answer = solutionClass.solution(s);
+//        print.print(answer);
+//
+//    }
 }
 
 class Solution0000 {
-    public int solution(String dartResult) {
-        char[] charArr = dartResult.toCharArray();
-        int[] gradeArr = new int[3];
-        int[][] typeArr = new int[3][3];
-        int length = charArr.length;
-        int answer = 0;
-        int count = 0;
-
-        for(int i = 0 ; i < length ; i++) {
-            char c = charArr[i];
-            System.out.println("c = " + c);
-            System.out.println("count = " + count);
-
-            switch(c) {
-                case 'S':
-                    typeArr[count - 1][2] = 1;
-                case 'D':
-                    typeArr[count - 1][2] = 2;
-                case 'T':
-                    typeArr[count - 1][2] = 3;
-                case '*':
-                    typeArr[count - 1][1] = 2;
-                    if(count != 1) {
-                        typeArr[count - 2][1] = 2;
-                    }
-                case '#':
-                    typeArr[count - 1][1] = -1;
-                default:
-                    if(i > 0 && charArr[i-1] == '1' && charArr[i] == '0'){
-                        typeArr[count - 1][0] = 10;
-                    }else {
-                        typeArr[count][0] = Character.getNumericValue(c);
-                        count++;
-                    }
+    public String solution(String s) {
+        String[] strArr = s.split(" ");
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0 ; i < strArr.length ; i++) {
+            char[] charArr = strArr[i].toLowerCase(Locale.ROOT).toCharArray();
+            if(charArr[0] < '0' || charArr[0] > '9'){
+                charArr[0] = Character.toUpperCase(charArr[0]);
             }
+            sb.append(new String(charArr)).append(" ");
         }
+        return sb.toString().trim();
+    }
+}
 
-        for(int a : gradeArr) {
-            System.out.println(a);
-            answer += a;
+
+
+
+
+
+
+
+
+
+
+
+
+class Print {
+    public void print(int answer) {
+        System.out.println(answer);
+    }
+
+    public void print(String answer) {
+        System.out.println(answer);
+    }
+
+    public void print(int[] answer) {
+        for(int a : answer) {
+            System.out.print(a + ", ");
         }
-        return answer;
+    }
+
+    public void print(String[] answer) {
+        for(String a : answer) {
+            System.out.print(a + ", ");
+        }
+    }
+
+    public void print(int[][] answer) {
+        System.out.print("[");
+        for(int[] a : answer){
+            System.out.print("[");
+            for(int b : a) {
+                System.out.print(b);
+                System.out.print(", ");
+            }
+            System.out.print("]");
+        }
+        System.out.print("]");
+    }
+
+    public void print(String[][] answer) {
+        System.out.print("[");
+        for(String[] a : answer){
+            System.out.print("[");
+            for(String b : a) {
+                System.out.print(b);
+                System.out.print(", ");
+            }
+            System.out.print("]");
+        }
+        System.out.print("]");
     }
 }

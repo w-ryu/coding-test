@@ -100,40 +100,18 @@ class Print {
     }
 
     public void print(int[] answer) {
-        for(int a : answer) {
-            System.out.print(a + ", ");
-        }
+        System.out.println(Arrays.toString(answer));
     }
 
     public void print(String[] answer) {
-        for(String a : answer) {
-            System.out.print(a + ", ");
-        }
+        System.out.println(Arrays.toString(answer));
     }
 
     public void print(int[][] answer) {
-        System.out.print("[");
-        for(int[] a : answer){
-            System.out.print("[");
-            for(int b : a) {
-                System.out.print(b);
-                System.out.print(", ");
-            }
-            System.out.print("]");
-        }
-        System.out.print("]");
+        System.out.println(Arrays.deepToString(answer));
     }
 
     public void print(String[][] answer) {
-        System.out.print("[");
-        for(String[] a : answer){
-            System.out.print("[");
-            for(String b : a) {
-                System.out.print(b);
-                System.out.print(", ");
-            }
-            System.out.print("]");
-        }
-        System.out.print("]");
+        System.out.println(Arrays.deepToString(answer));
     }
 }

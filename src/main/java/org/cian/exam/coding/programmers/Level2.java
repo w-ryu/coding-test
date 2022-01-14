@@ -4,7 +4,32 @@ import java.math.BigInteger;
 import java.util.*;
 
 public class Level2 {
+    // 다음 큰 숫자
+    public int solution12911(int n) {
+        int bitCount = Integer.bitCount(n);
 
+        while(bitCount != Integer.bitCount(++n)) {}
+        return n;
+    }
+
+    //땅따먹기
+    int solution12913(int[][] land) {
+        int answer = 0;
+        int row = land.length;
+
+        for(int i = 1 ; i < row ; i++) {
+            land[i][0] += Math.max(Math.max(land[i-1][1], land[i-1][2]), land[i-1][3]);
+            land[i][1] += Math.max(Math.max(land[i-1][0], land[i-1][2]), land[i-1][3]);
+            land[i][2] += Math.max(Math.max(land[i-1][1], land[i-1][1]), land[i-1][3]);
+            land[i][3] += Math.max(Math.max(land[i-1][1], land[i-1][2]), land[i-1][2]);
+        }
+
+        for(int i = 0 ; i < 4 ; i++){
+            answer = Math.max(answer, land[land.length - 1][i]);
+        }
+
+        return answer;
+    }
 
     public int solution12924(int n) {
         int answer = 0;

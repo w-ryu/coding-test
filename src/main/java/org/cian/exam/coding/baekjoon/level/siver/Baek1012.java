@@ -1,14 +1,13 @@
-package org.cian.exam.coding.baekjoon.level;
+package org.cian.exam.coding.baekjoon.level.siver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Silver2 {
-
-    //유기농 배추 [미완]
+public class Baek1012 {
+    //유기농 배추 [미완] Siver2
     static boolean[][] filed;
-    public static void baek1012() throws IOException {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int t = Integer.parseInt(br.readLine());

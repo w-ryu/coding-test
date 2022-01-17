@@ -1,13 +1,11 @@
-package org.cian.exam.coding.baekjoon.level;
-
-import org.springframework.stereotype.Service;
+package org.cian.exam.coding.baekjoon.level.array1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Array1 {
-    public void baek4344()throws IOException {
+public class Baek4344 {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
@@ -31,8 +29,6 @@ public class Array1 {
             double result = cnt * 100 / subNum;
 
             System.out.println(String.format("%.3f", result) + "%");
-
-
         }
     }
 }

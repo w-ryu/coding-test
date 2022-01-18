@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+// 연산자 끼워넣기 실버1 14896KB / 136ms / 2012B
 public class Back14888_Arthmetic {
     public static int N;
     public static long sum;

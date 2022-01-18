@@ -1,11 +1,12 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.foundation1.dataStructure200;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
 
-public class Main {
+//괄호
+public class Baek9012 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
@@ -34,4 +35,3 @@ public class Main {
         System.out.println(sb);
     }
 }
-

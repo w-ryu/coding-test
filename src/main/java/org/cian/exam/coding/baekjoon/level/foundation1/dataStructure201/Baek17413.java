@@ -1,4 +1,4 @@
-package org.cian.exam.coding.baekjoon.level.foundation1.dataStructure200;
+package org.cian.exam.coding.baekjoon.level.foundation1.dataStructure201;
 
 import java.io.BufferedReader;
 import java.io.IOException;

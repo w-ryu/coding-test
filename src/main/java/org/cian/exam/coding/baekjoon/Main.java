@@ -3,22 +3,41 @@ package org.cian.exam.coding.baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        int T = Integer.parseInt(br.readLine());
-        for(int i = 0 ; i < T ; i++) {
-            String[] inputArr = br.readLine().split(" ");
-            Arrays.sort(inputArr);
-            int A = Integer.parseInt(inputArr[0]);
-            int B = Integer.parseInt(inputArr[1]);
+        int answer = 0;
+        int N = Integer.parseInt(br.readLine());
+        String[] inputArr = br.readLine().split(" ");
+        int[] numArr = new int[N];
+        int max = Integer.MIN_VALUE;
 
-            int answer = 1;
-
+        for(int i = 0 ; i < N ; i++) {
+            numArr[i] = Integer.parseInt(inputArr[i]);
+            if(max < numArr[i]) {
+                max = numArr[i];
+            }
         }
-        System.out.println(sb);
+        boolean[] numCheck = new boolean[max+1];
+
+        numCheck[0] = numCheck[1] = true;
+
+        for(int i = 2 ; i <= Math.sqrt(max) ; i++) {
+            if(numCheck[i]) {
+                continue;
+            }
+            for(int j = i * 2 ; j <= max ; j += i) {
+                numCheck[j] = true;
+            }
+        }
+
+        for(int i = 0 ; i < N ; i++) {
+            if(!numCheck[numArr[i]]) {
+                answer++;
+            }
+        }
+        System.out.println(answer);
     }
 }

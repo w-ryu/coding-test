@@ -1,12 +1,17 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.foundation1.dataStructure300;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+//골드바흐의 추측
+// list사용해서 contain사용하면 느림
+// 바로 Array로 유무 확인해서 처리
+// 1000000을 설정하는 것보다 값 중에서 max값을 기준으로 소수배열 처리하는게 더 효율적임
+public class Baek6588 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();

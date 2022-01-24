@@ -8,7 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-//단어뒤집기 2
+/**
+ * [단어뒤집기2]
+ */
 public class Baek17413 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

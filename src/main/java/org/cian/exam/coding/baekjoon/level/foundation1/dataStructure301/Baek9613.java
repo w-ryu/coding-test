@@ -1,10 +1,14 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.foundation1.dataStructure301;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+/**
+ * [GCD 합]
+ * - 최대공약수는 재귀사용하여 구함
+ */
+public class Baek9613 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();

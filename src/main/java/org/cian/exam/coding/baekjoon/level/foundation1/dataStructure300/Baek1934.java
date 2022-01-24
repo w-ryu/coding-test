@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-//최소공배수
+/**
+ * [최소공배수]
+ */
+
 public class Baek1934 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

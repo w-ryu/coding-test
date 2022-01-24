@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-//접미사 배열
+/**
+ * [접미사 배열]
+ */
 public class Baek11656 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

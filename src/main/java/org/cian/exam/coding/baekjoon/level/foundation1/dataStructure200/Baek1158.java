@@ -8,7 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-//요세푸스
+/**
+ * [요세푸스]
+ */
 public class Baek1158 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

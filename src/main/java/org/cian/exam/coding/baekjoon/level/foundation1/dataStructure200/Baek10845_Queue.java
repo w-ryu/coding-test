@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-//에디터 (Iterator 사용)
+/**
+ * [에디터 (Iterator 사용)]
+ */
 public class Baek10845_Queue {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

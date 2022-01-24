@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
 
-//쇠막대기
+/**
+ * [쇠막대기] - 미완
+ */
 public class Baek10799 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

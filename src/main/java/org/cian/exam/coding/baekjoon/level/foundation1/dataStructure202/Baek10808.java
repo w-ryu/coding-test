@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
 
-//알파벳개수
+/**
+ * [알파벳개수]
+ */
 public class Baek10808 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

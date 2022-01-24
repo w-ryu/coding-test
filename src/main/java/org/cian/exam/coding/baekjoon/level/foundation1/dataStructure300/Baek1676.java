@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-// N! 끝에서 부터 0이 아닌 수까지의 0의 개수
-// 기존 풀이 방식은 BigInteger로 값을 구한 후 뒤에서 부터 0 count
-// 다른 풀이 방식은 곱하는 수의 5를 나눈 몫으로 0을 카운트하는 방식
-// 내것보다 이게 더 좋은듯
+/**
+ * [N! 끝에서 부터 0이 아닌 수까지의 0의 개수]
+ * - 기존 풀이 방식은 BigInteger로 값을 구한 후 뒤에서 부터 0 count
+ * - 다른 풀이 방식은 곱하는 수의 5를 나눈 몫으로 0을 카운트하는 방식
+ * - 내것보다 이게 더 좋은듯
+ */
 public class Baek1676 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

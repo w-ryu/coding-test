@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Stack;
 
-//에디터 (Iterator 사용)
+/**
+ * [에디터 (Iterator 사용)]
+ */
 public class Baek1406 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

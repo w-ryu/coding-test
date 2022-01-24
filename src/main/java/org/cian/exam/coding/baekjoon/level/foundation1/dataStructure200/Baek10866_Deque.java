@@ -8,7 +8,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-//요세푸스
+/**
+ * [덱]
+ */
 public class Baek10866_Deque {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

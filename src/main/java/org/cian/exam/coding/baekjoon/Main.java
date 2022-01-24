@@ -9,34 +9,20 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(br.readLine());
-
-        for(int i = 0 ; i < N ; i++) {
-            String[] inputArr = br.readLine().split(" ");
-            int numArrLnegth = Integer.parseInt(inputArr[0]);
-            int[] numArr = new int[numArrLnegth];
-
-            for(int j = 0 ; j < numArrLnegth ; j++) {
-                numArr[j] = Integer.parseInt(inputArr[j+1]);
+        int count = 0;
+        int num = N;
+        if(N == 0) {
+            sb.append(0);
+        }else if(N < 0) {
+            while((N / (int)Math.pow(2, count)) > 0) {
+                count++;
+                num = (count + 1) * (-2);
             }
-
-            int result = 0;
-
-            for(int j = 0 ; j < numArrLnegth - 1 ; j++) {
-                for(int k = j+1 ; k < numArrLnegth ; k++) {
-                    result += gcd(numArr[j], numArr[k]);
-                }
-            }
-            sb.append(result).append("\n");
+            sb.append(count).append("\n");
+        }else {
+            sb.append(N);
         }
 
         System.out.println(sb);
-    }
-
-    public static long gcd(int a, int b) {
-        if(b == 0) {
-            return a;
-        }else {
-            return gcd(b, a%b);
-        }
     }
 }

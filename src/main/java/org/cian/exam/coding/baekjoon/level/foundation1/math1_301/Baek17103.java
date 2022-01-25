@@ -1,10 +1,13 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.foundation1.math1_301;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+/**
+ * [골드바흐 파티션]
+ */
+public class Baek17103 {
     public static void main(String[] args) throws IOException {
         long beforeTime = System.currentTimeMillis();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

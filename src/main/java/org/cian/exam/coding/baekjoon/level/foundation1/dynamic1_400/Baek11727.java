@@ -1,10 +1,14 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.foundation1.dynamic1_400;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+/**
+ * [2xN타일링2] 14408KB / 124ms / 541B
+ * 뭔가 더 빠른게 있을것 같은데...
+ */
+public class Baek11727 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());

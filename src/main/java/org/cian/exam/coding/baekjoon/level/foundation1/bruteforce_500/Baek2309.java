@@ -1,11 +1,14 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.foundation1.bruteforce_500;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Main {
+/**
+ * [일곱난쟁이] 14176KB / 124ms / 1179B
+ */
+public class Baek2309 {
     public static int[] numArr = new int[9];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

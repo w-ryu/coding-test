@@ -3,44 +3,27 @@ package org.cian.exam.coding.baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
-    public static int[] numArr = new int[9];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0 ; i < 9 ; i++) {
-            numArr[i] = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+        String[] inputArr = br.readLine().split(" ");
+        long[] numArr = new long[N];
+        long[] totalArr = new long[N];
+        long max = -1000L;
+
+        for(int i = 0 ; i < N ; i++) {
+            numArr[i] = totalArr[i] = Integer.parseInt(inputArr[i]);
+            max = numArr[i] > max ? numArr[i] : max;
         }
 
-        Arrays.sort(numArr);
-        munchikin();
-
-        for(int i = 0 ; i < 9 ; i++) {
-            if(numArr[i] > 0) {
-                sb.append(numArr[i]).append("\n");
-            }
+        for(int i = 1 ; i < N ; i++) {
+            totalArr[i] = Math.max(numArr[i] + totalArr[i-1], numArr[i]);
+            max = totalArr[i] > max ? totalArr[i] : max;
         }
 
-        System.out.println(sb);
-    }
-
-    public static void munchikin() {
-
-        int totalSize = 0;
-        for(int i = 0 ; i < 9 ; i++) {
-            totalSize += numArr[i];
-        }
-
-        for(int i = 0 ; i < 8 ; i++) {
-            for(int j = i+1 ; j < 9 ; j++) {
-                int size = totalSize - (numArr[i] + numArr[j]);
-                if(size == 100) {
-                    numArr[i] = numArr[j] = 0;
-                    return;
-                }
-            }
-        }
+        System.out.println(max);
     }
 }
+

@@ -8,24 +8,18 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        int T = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
 
-        for(int i = 0 ; i < T ; i++) {
-            int N = Integer.parseInt(br.readLine());
+        for(int i = 0 ; i < N ; i++) {
+            String[] rgb = br.readLine().split(" ");
+            int R = Integer.parseInt(rgb[0]);
+            int G = Integer.parseInt(rgb[1]);
+            int B = Integer.parseInt(rgb[2]);
 
-            long[] numArr = new long[N+1];
-            numArr[0] = 1;
-            numArr[1] = 2;
-            if(N == 1) {
-                sb.append(numArr[0]).append("\n");
-                continue;
-            }
-            numArr[2] = 4;
+            int[] rgbPrice = new int[3];
 
-            for(int j = 3 ; j < N ; j++) {
-                numArr[j] = (numArr[j-1] + numArr[j-2] + numArr[j-3]) % 1000000009;
-            }
-            sb.append(numArr[N-1]).append("\n");
+
+
         }
 
         System.out.println(sb);

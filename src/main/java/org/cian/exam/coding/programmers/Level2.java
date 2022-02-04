@@ -4,6 +4,9 @@ import java.math.BigInteger;
 import java.util.*;
 
 public class Level2 {
+
+
+
     // 다음 큰 숫자
     public int solution12911(int n) {
         int bitCount = Integer.bitCount(n);

@@ -15,30 +15,21 @@ public class Baek1912 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        long[][] numArr = new long[N + 1][10];
-        long result = 0;
-        int mod = 1000000000;
+        String[] inputArr = br.readLine().split(" ");
+        long[] numArr = new long[N];
+        long[] totalArr = new long[N];
+        long max = -1000L;
 
-        for (int i = 1; i < 10; i++) {
-            numArr[1][i] = 1;
+        for(int i = 0 ; i < N ; i++) {
+            numArr[i] = totalArr[i] = Integer.parseInt(inputArr[i]);
+            max = numArr[i] > max ? numArr[i] : max;
         }
 
-        for (int i = 2; i <= N; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (j == 0) {
-                    numArr[i][j] = numArr[i - 1][1] % mod;
-                } else if (j == 9) {
-                    numArr[i][j] = numArr[i - 1][8] % mod;
-                } else {
-                    numArr[i][j] = numArr[i - 1][j - 1] + numArr[i - 1][j + 1] % mod;
-                }
-            }
+        for(int i = 1 ; i < N ; i++) {
+            totalArr[i] = Math.max(numArr[i] + totalArr[i-1], numArr[i]);
+            max = totalArr[i] > max ? totalArr[i] : max;
         }
 
-        for (int i = 0; i < 10; i++) {
-            result += numArr[N][i];
-        }
-
-        System.out.println(result % mod);
+        System.out.println(max);
     }
 }

@@ -1,10 +1,16 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.foundation1.dynamic_401;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+/**
+ * [오르막수] 14240KB / 128ms / 820B / 완
+ * DP
+ * Bottom-up으로 구현
+ * Top-down으로 한번 더 해보기
+ */
+public class Baek11507 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
@@ -28,4 +34,3 @@ public class Main {
         System.out.println(result % 10007);
     }
 }
-

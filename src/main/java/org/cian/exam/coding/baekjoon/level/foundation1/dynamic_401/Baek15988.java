@@ -1,4 +1,4 @@
-package org.cian.exam.coding.baekjoon.level.foundation1.dynamic1_400;
+package org.cian.exam.coding.baekjoon.level.foundation1.dynamic_401;
 
 import java.io.BufferedReader;
 import java.io.IOException;

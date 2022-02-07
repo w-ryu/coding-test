@@ -1,15 +1,15 @@
-package org.cian.exam.coding.baekjoon.level.foundation1.dynamic1_400;
+package org.cian.exam.coding.baekjoon.level.foundation1.dynamic_401;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * [동물원] 14500KB / 132ms / 554B / 완 - 다시
- * DP로 풀어야하는데 그냥 N항에 대한 점화식으로만 풀었음...
+ * [스티커] 131648KB / 700ms / 1327B / 완 - 다시
+ * DP로 풀긴했지만, 정확한 점화식을 구현하지 못했음 다시
  *
  */
-public class Baek1309 {
+public class Baek9465 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());

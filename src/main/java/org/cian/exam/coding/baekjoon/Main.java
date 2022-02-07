@@ -7,33 +7,24 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        int T = Integer.parseInt(br.readLine());
-        for(int i = 0 ; i < T ; i++) {
-            int N = Integer.parseInt(br.readLine());
-
-            int[][] scoreArr = new int[2][N+1];
-
-            for(int j = 0 ; j < 2 ; j++) {
-                String[] inputArr = br.readLine().split(" ");
-                for(int k = 1 ; k <= N ; k++) {
-                    scoreArr[j][k] = Integer.parseInt(inputArr[k-1]);
-                }
-            }
-
-            int[][] totalScoreArr = new int[2][N+1];
-
-            totalScoreArr[0][1] = scoreArr[0][1];
-            totalScoreArr[1][1] = scoreArr[1][1];
-
-            for(int j = 2; j <= N ; j++) {
-                totalScoreArr[0][j] = Math.max(totalScoreArr[1][j-1], totalScoreArr[1][j-2]) + scoreArr[0][j];
-                totalScoreArr[1][j] = Math.max(totalScoreArr[0][j-1], totalScoreArr[0][j-2]) + scoreArr[1][j];
-            }
-
-            sb.append(Math.max(totalScoreArr[0][N], totalScoreArr[1][N])).append("\n");
+        int N = Integer.parseInt(br.readLine());
+        int[] gArr = new int[N+1];
+        for(int i = 1 ; i < N+1 ; i++) {
+            gArr[i] = Integer.parseInt(br.readLine());
         }
-        System.out.println(sb);
+
+        int[] totalGArr = new int[N+1];
+        totalGArr[1] = gArr[1];
+        if(N > 1) {
+            totalGArr[2] = gArr[1] + gArr[2];
+        }
+
+        for(int i = 3 ; i <= N ; i++) {
+            totalGArr[i] = Math.max(
+                    totalGArr[i-1],Math.max(totalGArr[i-2] + gArr[i], totalGArr[i-3] + gArr[i-1] + gArr[i]));
+        }
+
+        System.out.println(totalGArr[N]);
     }
 }
 

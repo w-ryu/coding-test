@@ -14,36 +14,52 @@ public class Main {
         int t = 4;
         int m = 2;
         int p = 1;
-        int[] arr1 = {1,2};
-        int[] arr2 = {3,4};
+        int[] arr1 = {93, 30, 55};
+        int[] arr2 = {1, 30, 5};
         int[][] sizes1 = {{1,2,3,5},{5,6,7,8},{4,3,2,1}};
         int[][] sizes2 = {{3,3},{3,3}};
         String[] strArr1 = {"marina", "josipa", "nikola", "vinko", "filipa"};
         String[] strArr2 = {"josipa", "filipa", "marina", "nikola"};
 
-        String answer = solutionClass.solution(n);
+        int[] answer = solutionClass.solution(arr1, arr2);
         print.print(answer);
 
     }
 }
 class Solution0000 {
-    public String solution(int n) {
-        int[] arr = {1,2,4};
-        int input = n+2;
+    public int[] solution(int[] progresses, int[] speeds) {
+        int length = progresses.length;
+        if (length == 1) {
+            return new int[]{1};
+        }
+
         Stack<Integer> st = new Stack<>();
-        String answer = "";
+        int maxDay = 0;
+        int scope = 0;
+        for(int i = 0 ; i < length ; i++) {
+            int count = 0;
+            while(progresses[i] < 100) {
+                progresses[i] += speeds[i];
+                count++;
+            }
+            if(maxDay < count) {
+                maxDay = count;
+                if(i == 0) continue;
+                st.push(i-scope);
+                scope = i;
+            }
 
-        while(input > 2) {
-            int remainder = input % 3;
-            st.push(arr[remainder]);
-            input = input / 3 + 1;
+            if(i == length - 1){
+                st.push(i-scope+1);
+            }
         }
 
-        while(!st.isEmpty()){
-            answer += st.pop();
+        int[] functions = new int[st.size()];
+        for(int i = st.size()-1 ; i >=0  ; i--) {
+            functions[i] = st.pop();
         }
 
-        return answer;
+        return functions;
     }
 }
 

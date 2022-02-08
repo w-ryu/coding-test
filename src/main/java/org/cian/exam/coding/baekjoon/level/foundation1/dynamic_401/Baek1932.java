@@ -1,10 +1,14 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.foundation1.dynamic_401;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+/**
+ * [정수 삼각형] 완 / 실버1 / 28184KB / 304ms / 1265B
+ * DP
+ */
+public class Baek1932 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
@@ -40,4 +44,3 @@ public class Main {
         System.out.println(max);
     }
 }
-

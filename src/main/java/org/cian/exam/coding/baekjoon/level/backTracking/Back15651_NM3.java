@@ -8,7 +8,7 @@ public class Back15651_NM3 {
     // N과 M(3)[실버3] 68616KB / 488ms / 938B
     public static int N, M;
     public static int[] numArr;
-    public static StringBuilder sb = new StringBuilder();
+    public static StringBuffer sb = new StringBuffer();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] inputArr = br.readLine().split(" ");

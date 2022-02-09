@@ -8,7 +8,7 @@ public class Back15652_NM4 {
     // N과 M(4)[실버3] 17652KB / 156ms / 1050B
     public static int N, M;
     public static int[] numArr;
-    public static StringBuilder sb = new StringBuilder();
+    public static StringBuffer sb = new StringBuffer();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] inputArr = br.readLine().split(" ");

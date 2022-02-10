@@ -10,49 +10,44 @@ public class Main {
         Solution0000 solutionClass = new Solution0000();
         Print print = new Print();
         String s = "aabbaccc";
-        int n = 10;
+        int n = 4;
         int t = 4;
         int m = 2;
         int p = 1;
-        int[] arr1 = {1,2};
+        long l = 12345;
+        int[] arr1 = {1,2,3,4,6,7,8,0};
         int[] arr2 = {3,4};
         int[][] sizes1 = {{1,2,3,5},{5,6,7,8},{4,3,2,1}};
         int[][] sizes2 = {{3,3},{3,3}};
-        String[] strArr1 = {"marina", "josipa", "nikola", "vinko", "filipa"};
-        String[] strArr2 = {"josipa", "filipa", "marina", "nikola"};
+        String[] strArr1 = {"97674223", "119", "1195524421"};
+        String[] strArr2 = {"eden", "kiki"};
 
-        String answer = solutionClass.solution(n);
+        boolean answer = solutionClass.solution(strArr1);
         print.print(answer);
 
     }
 }
+
 class Solution0000 {
-    public String solution(int n) {
-        int[] arr = {1,2,4};
-        int input = n+2;
-        Stack<Integer> st = new Stack<>();
-        String answer = "";
+    public boolean solution(String[] phone_book) {
+        Arrays.sort(phone_book);
 
-        while(input > 2) {
-            int remainder = input % 3;
-            st.push(arr[remainder]);
-            input = input / 3 + 1;
+        for(int i = 0 ; i < phone_book.length ; i++) {
+            if(phone_book[i+1].startsWith(phone_book[i])) return false;
         }
 
-        while(!st.isEmpty()){
-            answer += st.pop();
-        }
-
-        return answer;
+        return true;
     }
 }
 
 
 
 class Print {
-    public void print(int answer) {
+    public void print(boolean answer) {
         System.out.println(answer);
     }
+
+    public void print(int answer) { System.out.println(answer); }
 
     public void print(long answer) { System.out.println(answer);}
 

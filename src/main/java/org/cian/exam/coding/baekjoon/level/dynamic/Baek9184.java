@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Baek9184 {
-    public static StringBuilder sb = new StringBuilder();
+    public static StringBuffer sb = new StringBuffer();
     public static int[][][] arr = new int[21][21][21];
     public static int A, B, C;
     public static void main(String[] args) throws IOException {

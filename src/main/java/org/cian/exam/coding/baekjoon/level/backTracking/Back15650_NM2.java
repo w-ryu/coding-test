@@ -9,7 +9,7 @@ public class Back15650_NM2 {
     public static int N, M;
     public static boolean[] visitArr;
     public static int[] numArr;
-    public static StringBuilder sb = new StringBuilder();
+    public static StringBuffer sb = new StringBuffer();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] inputArr = br.readLine().split(" ");

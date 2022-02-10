@@ -7,37 +7,36 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-        int[][] numArr = new int[N+1][N+1];
-        int max = 0;
-        for(int i = 1 ; i <= N ; i++) {
-            String[] inputArr = br.readLine().split(" ");
-            int length = inputArr.length;
-            for(int j = 1 ; j <= length ; j++) {
-                numArr[i][j] = Integer.parseInt(inputArr[j-1]);
+        StringBuilder sb = new StringBuilder();
+        int T = Integer.parseInt(br.readLine());
+
+        for(int i = 0 ; i < T ; i++) {
+            int N = Integer.parseInt(br.readLine());
+
+            boolean[] primeArr=  new boolean[N+1];
+            primeArr[0] = primeArr[1] = true;
+
+            for(int j = 2 ; j <= (int)Math.sqrt(N) ; j++) {
+                if(primeArr[j]) {
+                    continue;
+                }
+                for(int k = j*2 ; k <= N ; k = k+j) {
+                    primeArr[k] = true;
+                }
+            }
+
+            int half = N/2;
+            if(N%2 == 1) half++;
+
+            for(int j = half ; j >= 2 ; j--) {
+                if(!primeArr[j] && !primeArr[N - j]) {
+                    sb.append(j).append(" ").append(N-j).append("\n");
+                    break;
+                }
             }
         }
 
-        if(N == 1){
-            max = numArr[1][1];
-        }
-
-        for(int i = 2 ; i <= N ; i++) {
-            for(int j = 1 ; j <= i ; j++) {
-                if(j == 1) {
-                    numArr[i][j] += numArr[i-1][j];
-                }else if(j == i) {
-                    numArr[i][j] += numArr[i-1][j-1];
-                }else {
-                    numArr[i][j] += Math.max(numArr[i-1][j], numArr[i-1][j-1]);
-                }
-                if(i == N && max < numArr[i][j]) {
-                    max = numArr[i][j];
-                }
-            }
-        }
-
-        System.out.println(max);
+        System.out.println(sb);
     }
 }
 

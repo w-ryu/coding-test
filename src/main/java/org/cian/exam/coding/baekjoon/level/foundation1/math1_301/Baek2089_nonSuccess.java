@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 public class Baek2089_nonSuccess {
     public static int[] biArr;
     public static int N;
-    public static StringBuilder sb = new StringBuilder();
+    public static StringBuffer sb = new StringBuffer();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());

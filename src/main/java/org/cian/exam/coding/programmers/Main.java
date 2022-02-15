@@ -9,7 +9,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Solution0000 solutionClass = new Solution0000();
         Print print = new Print();
-        String s = "17";
+        String s1 = "FRANCE";
+        String s2 = "french";
         int n = 10;
         int t = 2;
         int m = 2;
@@ -22,26 +23,46 @@ public class Main {
         String[] strArr1 = {"97674223", "119", "1195524421"};
         String[] strArr2 = {"eden", "kiki"};
 
-        int[] answer = solutionClass.solution(n, t);
+        int answer = solutionClass.solution(s1, s2);
         print.print(answer);
 
     }
 }
 
 class Solution0000 {
-    public int[] solution(int brown, int yellow) {
-        int a = (brown-4) / 2;
-        int[] answer = {};
-        for(int i = 1 ; i < brown/2 ; i++) {
-            int b = (int)Math.pow(i,2) - (a * i) + yellow;
-            if(b == 0) {
-                answer = new int[]{i+2, a-i+2};
-                if(a-i+2 > i+2) {
-                    answer = new int[]{a-i+2, i+2};
-                }
+    public int solution(String str1, String str2) {
+        double answer = 0;
+        char[] charArr1 = str1.toUpperCase(Locale.ROOT).toCharArray();
+        char[] charArr2 = str2.toUpperCase(Locale.ROOT).toCharArray();
+
+        int length1 = charArr1.length;
+        int length2 = charArr2.length;
+
+        HashSet<String> intersection = new HashSet<>();
+        HashSet<String> union = new HashSet<>();
+
+        List<String> strList1 = new ArrayList<>();
+        List<String> strList2 = new ArrayList<>();
+
+        for(int i = 0 ; i < length1-1 ;i ++) {
+            if((charArr1[i] >= 'A' && charArr1[i] <= 'Z') && (charArr1[i+1] >= 'A' && charArr1[i+1] <= 'Z')) {
+                union.add(String.valueOf(charArr1) + String.valueOf(charArr1));
+            }else {
+                continue;
             }
         }
-        return answer;
+
+        for(int i = 0 ; i < length2-1 ;i ++) {
+            if((charArr2[i] >= 'A' && charArr2[i] <= 'Z') && (charArr2[i+1] >= 'A' && charArr2[i+1] <= 'Z')) {
+                union.add(String.valueOf(charArr1) + String.valueOf(charArr1));
+            }else {
+                continue;
+            }
+        }
+
+
+
+        return (int)(answer * 65536);
     }
 }
 

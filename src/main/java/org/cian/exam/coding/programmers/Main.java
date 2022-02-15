@@ -9,48 +9,39 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Solution0000 solutionClass = new Solution0000();
         Print print = new Print();
-        String s = "aabbaccc";
-        int n = 4;
-        int t = 4;
+        String s = "17";
+        int n = 10;
+        int t = 2;
         int m = 2;
         int p = 1;
         long l = 12345;
-        int[] arr1 = {3, 30, 34, 5, 9};
+        int[] arr1 = {3, 0, 6, 1, 5};
         int[] arr2 = {3,4};
         int[][] sizes1 = {{1,2,3,5},{5,6,7,8},{4,3,2,1}};
         int[][] sizes2 = {{3,3},{3,3}};
         String[] strArr1 = {"97674223", "119", "1195524421"};
         String[] strArr2 = {"eden", "kiki"};
 
-        String answer = solutionClass.solution(arr1);
+        int[] answer = solutionClass.solution(n, t);
         print.print(answer);
 
     }
 }
 
 class Solution0000 {
-    public String solution(int[] numbers) {
-        StringBuilder sb = new StringBuilder();
-        int length = numbers.length;
-        String[] arr = new String[length];
-        int n = 0;
-        for(int i = 0 ; i < length ; i++) {
-            arr[i] = String.valueOf(numbers[i]);
-        }
-        Arrays.sort(arr);
-        System.out.println(Arrays.toString(arr));
-        for(int i = length-1 ; i >= 0 ; i--) {
-            int minLength = arr[i].length() >= arr[i-1].length() ? arr[i].length() : arr[i-1].length();
-
-            for(int j = 0 ; j < minLength ; j ++){
-                if(arr[i].indexOf(j) == arr[i-1].indexOf(j)){
-
-                }else {
-                    sb.append(arr[i]);
+    public int[] solution(int brown, int yellow) {
+        int a = (brown-4) / 2;
+        int[] answer = {};
+        for(int i = 1 ; i < brown/2 ; i++) {
+            int b = (int)Math.pow(i,2) - (a * i) + yellow;
+            if(b == 0) {
+                answer = new int[]{i+2, a-i+2};
+                if(a-i+2 > i+2) {
+                    answer = new int[]{a-i+2, i+2};
                 }
             }
         }
-        return sb.toString();
+        return answer;
     }
 }
 

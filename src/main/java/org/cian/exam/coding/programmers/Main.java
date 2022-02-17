@@ -2,6 +2,7 @@ package org.cian.exam.coding.programmers;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.sql.Array;
 import java.util.*;
 
 public class Main {
@@ -9,8 +10,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Solution0000 solutionClass = new Solution0000();
         Print print = new Print();
-        String s1 = "FRANCE";
-        String s2 = "french";
+        String s1 = "100-200*300-500+20";
+        String s2 = "e=m*c^2";
         int n = 10;
         int t = 2;
         int m = 2;
@@ -23,46 +24,42 @@ public class Main {
         String[] strArr1 = {"97674223", "119", "1195524421"};
         String[] strArr2 = {"eden", "kiki"};
 
-        int answer = solutionClass.solution(s1, s2);
+        long answer = solutionClass.solution(s1);
         print.print(answer);
 
     }
 }
 
 class Solution0000 {
-    public int solution(String str1, String str2) {
-        double answer = 0;
-        char[] charArr1 = str1.toUpperCase(Locale.ROOT).toCharArray();
-        char[] charArr2 = str2.toUpperCase(Locale.ROOT).toCharArray();
+    public long solution(String expression) {
+        String[] strArr = expression.replaceAll("[+,\\-,*]", " ").split(" ");
+        int numLength = strArr.length;
 
-        int length1 = charArr1.length;
-        int length2 = charArr2.length;
-
-        HashSet<String> intersection = new HashSet<>();
-        HashSet<String> union = new HashSet<>();
-
-        List<String> strList1 = new ArrayList<>();
-        List<String> strList2 = new ArrayList<>();
-
-        for(int i = 0 ; i < length1-1 ;i ++) {
-            if((charArr1[i] >= 'A' && charArr1[i] <= 'Z') && (charArr1[i+1] >= 'A' && charArr1[i+1] <= 'Z')) {
-                union.add(String.valueOf(charArr1) + String.valueOf(charArr1));
-            }else {
-                continue;
-            }
+        long[] numArr = new long[numLength];
+        for(int i = 0 ; i < numLength ; i++) {
+            numArr[i] = Integer.parseInt(strArr[i]);
         }
 
-        for(int i = 0 ; i < length2-1 ;i ++) {
-            if((charArr2[i] >= 'A' && charArr2[i] <= 'Z') && (charArr2[i+1] >= 'A' && charArr2[i+1] <= 'Z')) {
-                union.add(String.valueOf(charArr1) + String.valueOf(charArr1));
-            }else {
-                continue;
-            }
+        List<Character> codeList = new ArrayList<>();
+        String codeStr = expression.replaceAll("[0-9]", "");
+        for(int i = 0 ; i < numLength-1 ; i++){
+            codeList.add(codeStr.charAt(i));
         }
 
+        int codeType = codeList.stream().distinct().toArray().length;
 
 
-        return (int)(answer * 65536);
+
+        System.out.println();
+        System.out.println(codeList);
+
+
+
+        System.out.println("expression = " + expression);
+
+
+        long answer = 0;
+        return answer;
     }
 }
 

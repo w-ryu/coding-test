@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.sql.Array;
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 public class Main {
 
@@ -48,7 +50,7 @@ class Solution0000 {
 
         int codeType = codeList.stream().distinct().toArray().length;
 
-
+        Function<Integer, Integer> f = i -> i+10;
 
         System.out.println();
         System.out.println(codeList);

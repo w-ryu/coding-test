@@ -3,34 +3,42 @@ package org.cian.exam.coding.baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+
         int T = Integer.parseInt(br.readLine());
-        long[] numArr;
+
         for(int i = 0 ; i < T ; i++) {
-            int N = Integer.parseInt(br.readLine());
-            if(N <= 3) {
-                sb.append(1).append("\n");
-                continue;
-            }else if(N == 4) {
-                sb.append(2).append("\n");
-                continue;
-            }else {
-                numArr = new long[N+1];
-                numArr[1] = numArr[2] = numArr[3] = 1;
-                numArr[4] = 2;
+            int answer = 1;
+            int[] inputArr = new int[2];
+            String[] strArr = br.readLine().split(" ");
+            inputArr[0] = Integer.parseInt(strArr[0]);
+            inputArr[1] = Integer.parseInt(strArr[1]);
+            Arrays.sort(inputArr);
 
-                for(int j = 5 ; j <= N ; j++) {
-                    numArr[j] = numArr[j-1] + numArr[j-5];
+            int num1 = inputArr[0];
+            int num2 = inputArr[1];
+
+            for(int j = 2 ; j <= (int)Math.sqrt(inputArr[1])+1 ; j++) {
+                if(num1 == 1 || num2 == 1) {
+                    answer *= num1 * num2;
+                    break;
                 }
-                sb.append(numArr[N]).append("\n");
+                while(num1 / j > 0 || num2 / j > 0) {
+                    if(num1 % j > 0 && num2 % j > 0) break;
+                    if(num1 % j == 0) num1 /= j;
+                    if(num2 % j == 0) num2 /= j;
+                    answer *= j;
+                }
+                if(j == (int)Math.sqrt(inputArr[1])) {
+                    answer *= num1 * num2;
+                }
             }
+            System.out.println(answer);
         }
-
-        System.out.println(sb);
     }
 }
 

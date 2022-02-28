@@ -1,10 +1,14 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.if_;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
-public class Main {
+/**
+ * [오븐 시계] 완 / 브론즈4 / 16144KB / 152ms / 893B
+ */
+public class Baek2525 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
@@ -31,4 +35,3 @@ public class Main {
         System.out.println(hour + " " + min);
     }
 }
-

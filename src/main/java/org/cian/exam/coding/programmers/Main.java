@@ -2,41 +2,66 @@ package org.cian.exam.coding.programmers;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.sql.Array;
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         Solution0000 solutionClass = new Solution0000();
         Print print = new Print();
-        String s = "aabbaccc";
-        int n = 4;
-        int t = 4;
+        String s1 = "100-200*300-500+20";
+        String s2 = "e=m*c^2";
+        int n = 10;
+        int t = 2;
         int m = 2;
         int p = 1;
         long l = 12345;
-        int[] arr1 = {1,2,3,4,6,7,8,0};
+        int[] arr1 = {3, 0, 6, 1, 5};
         int[] arr2 = {3,4};
         int[][] sizes1 = {{1,2,3,5},{5,6,7,8},{4,3,2,1}};
         int[][] sizes2 = {{3,3},{3,3}};
         String[] strArr1 = {"97674223", "119", "1195524421"};
         String[] strArr2 = {"eden", "kiki"};
 
-        boolean answer = solutionClass.solution(strArr1);
+        long answer = solutionClass.solution(s1);
         print.print(answer);
 
     }
 }
 
 class Solution0000 {
-    public boolean solution(String[] phone_book) {
-        Arrays.sort(phone_book);
+    public long solution(String expression) {
+        String[] strArr = expression.replaceAll("[+,\\-,*]", " ").split(" ");
+        int numLength = strArr.length;
 
-        for(int i = 0 ; i < phone_book.length ; i++) {
-            if(phone_book[i+1].startsWith(phone_book[i])) return false;
+        long[] numArr = new long[numLength];
+        for(int i = 0 ; i < numLength ; i++) {
+            numArr[i] = Integer.parseInt(strArr[i]);
         }
 
-        return true;
+        List<Character> codeList = new ArrayList<>();
+        String codeStr = expression.replaceAll("[0-9]", "");
+        for(int i = 0 ; i < numLength-1 ; i++){
+            codeList.add(codeStr.charAt(i));
+        }
+
+        int codeType = codeList.stream().distinct().toArray().length;
+
+        Function<Integer, Integer> f = i -> i+10;
+
+        System.out.println();
+        System.out.println(codeList);
+
+
+
+        System.out.println("expression = " + expression);
+
+
+        long answer = 0;
+        return answer;
     }
 }
 

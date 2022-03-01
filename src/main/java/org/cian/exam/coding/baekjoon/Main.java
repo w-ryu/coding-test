@@ -8,27 +8,43 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
+
+        int N = Integer.parseInt(br.readLine());
         String[] inputArr = br.readLine().split(" ");
-        int hour = Integer.parseInt(inputArr[0]);
-        int min = Integer.parseInt(inputArr[1]);
-        int playtime = Integer.parseInt(br.readLine());
-        int pHour = playtime / 60;
-        int pMin = playtime % 60;
-
-        if(min + pMin >= 60) {
-            pHour++;
-            min += pMin - 60;
-        }else {
-            min += pMin;
+        int max = Integer.MIN_VALUE;
+        for(int i = 0 ; i < N ; i++) {
+            int num = Integer.parseInt(inputArr[i]);
+            if(num < 0) num *= -1;
+            if(max < num) {
+                max = num;
+            }
         }
 
-        if(hour + pHour >= 24) {
-            hour += pHour - 24;
-        }else {
-            hour += pHour;
+        boolean[][] A = new boolean[2][max+1];
+
+        for(int i = 0 ; i < max ; i++) {
+            int num = Integer.parseInt(inputArr[i]);
+            if(num < 0) {
+                A[0][num] = true;
+            }else {
+                A[1][num] = true;
+            }
         }
 
-        System.out.println(hour + " " + min);
+        int M = Integer.parseInt(br.readLine());
+        inputArr = br.readLine().split(" ");
+
+        for(int i = 0 ; i < M ; i++) {
+            int num = Integer.parseInt(inputArr[i]);
+            if((num < 0 && (num * -1) > max) || num > max) {
+                sb.append(0).append("\n");
+            }else if((num < 0 && A[0][num]) || A[1][num]) {
+                sb.append(1).append("\n");
+            }else {
+                sb.append(0).append("\n");
+            }
+        }
+        System.out.println(sb);
     }
 }
 

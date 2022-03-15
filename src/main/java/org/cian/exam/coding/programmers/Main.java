@@ -10,9 +10,9 @@ import java.util.function.Function;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Solution0000 solutionClass = new Solution0000();
+        Solution solutionClass = new Solution();
         Print print = new Print();
-        String s1 = "100-200*300-500+20";
+        String s1 = "011";
         String s2 = "e=m*c^2";
         int n = 10;
         int t = 2;
@@ -32,39 +32,57 @@ public class Main {
     }
 }
 
-class Solution0000 {
-    public long solution(String expression) {
-        String[] strArr = expression.replaceAll("[+,\\-,*]", " ").split(" ");
-        int numLength = strArr.length;
+class Solution {
+    public static StringBuilder sb = new StringBuilder();
+    public static boolean[] primeArr;
+    public static char[] strArr;
+    public static int answer = 0;
+    public static boolean[] numCheck;
+    public int solution(String numbers) {
+        strArr = numbers.toCharArray();
+        Arrays.sort(strArr);
+        int max = Integer.parseInt(String.valueOf(sb.append(strArr).reverse()));
+        primeArr = new boolean[max+1];
 
-        long[] numArr = new long[numLength];
-        for(int i = 0 ; i < numLength ; i++) {
-            numArr[i] = Integer.parseInt(strArr[i]);
+        primeArr[0] = primeArr[1] = true;
+        for(int i = 2 ; i <= Math.sqrt(max) ; i++) {
+            if(primeArr[i]) continue;
+            for(int j = i + i ; j <= max ; j += i) {
+                primeArr[j] = true;
+            }
         }
 
-        List<Character> codeList = new ArrayList<>();
-        String codeStr = expression.replaceAll("[0-9]", "");
-        for(int i = 0 ; i < numLength-1 ; i++){
-            codeList.add(codeStr.charAt(i));
+        int length = strArr.length;
+
+        for(int i = 1 ; i <= length ; i++) {
+            numCheck = new boolean[length];
+            primeCheck("", i);
         }
 
-        int codeType = codeList.stream().distinct().toArray().length;
-
-        Function<Integer, Integer> f = i -> i+10;
-
-        System.out.println();
-        System.out.println(codeList);
-
-
-
-        System.out.println("expression = " + expression);
-
-
-        long answer = 0;
         return answer;
     }
-}
 
+    public void primeCheck(String numStr, int size) {
+        if(numStr.length() == size) {
+            int num = Integer.parseInt(numStr);
+            if(!primeArr[num]){
+                answer++;
+                primeArr[num] = true;
+            }
+            return;
+        }
+
+        int length = strArr.length;
+        for(int i = 0 ; i < length ; i++) {
+            if(!numCheck[i]){
+                String str = numStr + strArr[i];
+                numCheck[i] = true;
+                primeCheck(str, size);
+                numCheck[i] = false;
+            }
+        }
+    }
+}
 
 
 class Print {

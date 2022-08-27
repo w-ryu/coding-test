@@ -1,10 +1,14 @@
-package org.cian.exam.coding.baekjoon;
+package org.cian.exam.coding.baekjoon.level.etc;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+/**
+ * [다리 놓기] - 완/다시
+ * 배열처리 다시 해보기
+ */
+public class Baek1010 {
     static int[][] nArr = new int[31][31];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,4 +40,3 @@ public class Main {
         return nArr[n][r] = combination(n-1, r-1) + combination(n-1, r);
     }
 }
-

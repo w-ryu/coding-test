@@ -19,27 +19,57 @@ public class Main {
         int m = 16;
         int p = 1;
         long l = 12345;
-        int[] arr1 = {3, 0, 6, 1, 5};
+        int[] arr1 = {7, 1, 3};
         int[] arr2 = {3,4};
         int[][] sizes1 = {{1,2,3,5},{5,6,7,8},{4,3,2,1}};
         int[][] sizes2 = {{3,3},{3,3}};
-        String[] strArr1 = {"97674223", "119", "1195524421"};
+        String[] strArr1 = {"TR", "RT", "TR"};
         String[] strArr2 = {"eden", "kiki"};
 
-        long answer = solutionClass.solution(n, t, m);
+        String answer = solutionClass.solution(strArr1, arr1);
         print.print(answer);
 
     }
 }
 
 class Solution {
-    public int solution(int n, int a, int b) {
-        int answer = 0;
-        while(a != b){
-            a = (a+1)/2;
-            b = (b+1)/2;
-            ++answer;
+    public String solution(String[] survey, int[] choices) {
+        String answer = "";
+        int choicesLen = choices.length;
+        int[] typeScore = new int[4];
+        char[] typeList = {'R', 'T', 'C', 'F', 'J', 'M', 'A', 'N'};
+
+        for(int i = 0 ; i < choicesLen ; i++) {
+            choices[i] -= 4;
+            char[] surveyCharList = survey[i].toCharArray();
+
+            if(surveyCharList[0] > surveyCharList[1]) {
+                choices[i] *= -1;
+                Character tmp = surveyCharList[0];
+                surveyCharList[0] = surveyCharList[1];
+                surveyCharList[1] = tmp;
+            }
+
+            switch(surveyCharList[0]) {
+                case 'R' :
+                    typeScore[0] += choices[i];
+                    break;
+                case 'C' :
+                    typeScore[1] += choices[i];
+                    break;
+                case 'J' :
+                    typeScore[2] += choices[i];
+                    break;
+                case 'A' :
+                    typeScore[3] += choices[i];
+                    break;
+            }
         }
+
+        for(int i = 0 ; i < 4 ; i++) {
+            answer += typeScore[i] <= 0 ? typeList[i * 2] : typeList[i * 2 + 1];
+        }
+
         return answer;
     }
 }

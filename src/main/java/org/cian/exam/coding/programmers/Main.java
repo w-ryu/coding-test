@@ -14,8 +14,8 @@ public class Main {
         Print print = new Print();
         String s1 = "011";
         String s2 = "e=m*c^2";
-        int n = 16;
-        int t = 1;
+        int n = 2;
+        int t = 4;
         int m = 16;
         int p = 1;
         long l = 12345;
@@ -26,48 +26,18 @@ public class Main {
         String[] strArr1 = {"TR", "RT", "TR"};
         String[] strArr2 = {"eden", "kiki"};
 
-        String answer = solutionClass.solution(strArr1, arr1);
+        long answer = solutionClass.solution(n, t);
         print.print(answer);
 
     }
 }
 
 class Solution {
-    public String solution(String[] survey, int[] choices) {
-        String answer = "";
-        int choicesLen = choices.length;
-        int[] typeScore = new int[4];
-        char[] typeList = {'R', 'T', 'C', 'F', 'J', 'M', 'A', 'N'};
+    public long solution(int k, int d) {
+        long answer = 0;
 
-        for(int i = 0 ; i < choicesLen ; i++) {
-            choices[i] -= 4;
-            char[] surveyCharList = survey[i].toCharArray();
-
-            if(surveyCharList[0] > surveyCharList[1]) {
-                choices[i] *= -1;
-                Character tmp = surveyCharList[0];
-                surveyCharList[0] = surveyCharList[1];
-                surveyCharList[1] = tmp;
-            }
-
-            switch(surveyCharList[0]) {
-                case 'R' :
-                    typeScore[0] += choices[i];
-                    break;
-                case 'C' :
-                    typeScore[1] += choices[i];
-                    break;
-                case 'J' :
-                    typeScore[2] += choices[i];
-                    break;
-                case 'A' :
-                    typeScore[3] += choices[i];
-                    break;
-            }
-        }
-
-        for(int i = 0 ; i < 4 ; i++) {
-            answer += typeScore[i] <= 0 ? typeList[i * 2] : typeList[i * 2 + 1];
+        for(int i = 0 ; i <= d ; i = i+k) {
+            answer += (int)Math.sqrt(Math.pow(d,2) - Math.pow(i,2)) / k + 1;
         }
 
         return answer;

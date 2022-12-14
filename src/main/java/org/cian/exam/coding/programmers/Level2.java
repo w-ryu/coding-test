@@ -5,7 +5,15 @@ import java.util.*;
 
 public class Level2 {
 
+    public long solution140107(int k, int d) {
+        long answer = 0;
 
+        for(int i = 0 ; i <= d ; i = i+k) {
+            answer += (int)Math.sqrt(Math.pow(d,2) - Math.pow(i,2)) / k + 1;
+        }
+
+        return answer;
+    }
 
     // 다음 큰 숫자
     public int solution12911(int n) {

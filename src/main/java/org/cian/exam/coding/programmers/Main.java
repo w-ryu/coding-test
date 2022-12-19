@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Solution solutionClass = new Solution();
         Print print = new Print();
-        String s1 = "011";
+        String s1 = "N";
         String s2 = "e=m*c^2";
         int n = 2;
         int t = 4;
@@ -23,23 +23,18 @@ public class Main {
         int[] arr2 = {3,4};
         int[][] sizes1 = {{1,2,3,5},{5,6,7,8},{4,3,2,1}};
         int[][] sizes2 = {{3,3},{3,3}};
-        String[] strArr1 = {"TR", "RT", "TR"};
+        String[] strArr1 = {"img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"};
         String[] strArr2 = {"eden", "kiki"};
 
-        long answer = solutionClass.solution(n, t);
+        int answer = solutionClass.solution(sizes1);
         print.print(answer);
 
     }
 }
 
 class Solution {
-    public long solution(int k, int d) {
-        long answer = 0;
-
-        for(int i = 0 ; i <= d ; i = i+k) {
-            answer += (int)Math.sqrt(Math.pow(d,2) - Math.pow(i,2)) / k + 1;
-        }
-
+    public int solution(int[][] ability) {
+        int answer = 0;
         return answer;
     }
 }

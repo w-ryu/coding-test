@@ -1,4 +1,4 @@
-package org.cian.exam.coding.programmers;
+package org.cian.exam.coding.leetcode;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -8,11 +8,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Solution solutionClass = new Solution();
         Print print = new Print();
-        String s1 = "110010101001";
+        String s1 = "KAKAO";
         String s2 = "e=m*c^2";
-        int n = 8;
+        int n = 9;
         int t = 4;
-        int m = 7;
+        int m = 3;
         int p = 1;
         long l = 12345;
         int[] arr1 = {2,7,11,15};
@@ -23,17 +23,15 @@ public class Main {
         String[] strArr2 = {"eden", "kiki"};
         String[][] strsArr2 = {{"100", "ryan", "music", "2"}, {"200", "apeach", "math", "2"}, {"300", "tube", "computer", "3"}, {"400", "con", "computer", "4"}, {"500", "muzi", "music", "3"}, {"600", "apeach", "music", "2"}};
 
-        int[] answer = solutionClass.solution(s1);
+        int[] answer = solutionClass.addTwoNumbers();
         print.print(answer);
 
     }
 }
 
 class Solution {
-    public int[] solution(String genres) {
-
-        int[] answer = {};
-        return answer;
+    public int[] addTwoNumbers() {
+        return new int[1];
     }
 }
 
